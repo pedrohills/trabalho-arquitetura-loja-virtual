@@ -11,10 +11,10 @@ export class ProductService {
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<Product[]> {
-    return this.http.get<Product[]>(`http://localhost:4000/produtos`);
+    return this.http.get<Product[]>(`/produtos`);
   }
 
   getById(id: number): Observable<Product> {
-    return this.http.get<Product>(`http://localhost:4000/produtos/${id}`);
+    return this.http.get<Product>(`/produtos/${id}`);
   }
 }
