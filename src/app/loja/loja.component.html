@@ -7,7 +7,6 @@
 
         <div class="col-md-3 mt-3" *ngFor="let product of products$ | async">
             <div class="card">
-                <img [src]="product.imagem" class="card-img-top" alt="Imagem do produto">
                 <div class="card-body">
                     <h5 class="card-title">{{ product.nome }}</h5>
                     <p class="card-text">
