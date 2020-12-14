@@ -1,6 +1,6 @@
 {
     "/produtos": {
-        "target": "http://localhost:4000/produtos",
+        "target": "http://localhost:4000",
         "secure": false
     }
 }
