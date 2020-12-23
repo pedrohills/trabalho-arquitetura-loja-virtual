@@ -11,12 +11,17 @@
         <a class="nav-link" routerLink="/carrinho" routerLinkActive="active">Carrinho de Compras</a>
       </li>
     </ul>
-    <ul class="navbar-nav ml-auto">
+    <ul class="navbar-nav ml-auto" *ngIf="!accountService.user.id">
       <li class="nav-item">
         <a class="nav-link" routerLink="/cadastrar" routerLinkActive="active">Cadastrar</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="/entrar" routerLinkActive="active">Entrar</a>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto" *ngIf="accountService.user.id">
+      <li class="nav-item">
+        <a class="nav-link" href="#" (click)="sair()" routerLinkActive="active">Sair</a>
       </li>
     </ul>
   </div>

@@ -5,12 +5,12 @@
             <hr>
         </div>
 
-        <div class="col-md-3 mt-3" *ngFor="let product of products$ | async">
+        <div class="col-md-3 mt-3" *ngFor="let product of (products$ | async).produtos">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">{{ product.nome }}</h5>
                     <p class="card-text">
-                        <strong>Preço:</strong> R$ 
+                        <strong>Preço:</strong> R$ {{product.preco}}
                     </p>
                     <a href="#" class="btn btn-primary btn-block">Comprar</a>
                 </div>

@@ -2,5 +2,9 @@
     "/produtos": {
         "target": "http://localhost:4000",
         "secure": false
+    },
+    "/login": {
+        "target": "http://localhost",
+        "secure": false
     }
 }

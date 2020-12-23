@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { Alert } from './shared/models/alert';
+import { AccountService } from './shared/services/account.service';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +9,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'trabalho-arquitetura-loja-virtual';
+
+  isLoading = false;
+
+  constructor(public accountService: AccountService, private router: Router) { }
+
+  sair() {
+    this.isLoading = true;
+    this.accountService.logout()
+      .subscribe(data => {
+        this.isLoading = false;
+        this.accountService.deleteUser();
+        setTimeout(() => {
+          this.router.navigateByUrl("/");
+        }, 3000);
+        console.log(data);
+      }, data => {
+        this.isLoading = false;
+        console.error(data);
+      });
+  }
+
 }

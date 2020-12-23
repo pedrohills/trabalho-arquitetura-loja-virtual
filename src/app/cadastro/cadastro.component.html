@@ -1,25 +1,41 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-4 offset-md-4">
-            <div class="card mt-5">
-                <div class="card-body">
-                    <form>
+        <div class="col-md-6 offset-md-3">
+            <h3 class="text-center mt-5 mb-3">Cadastrar</h3>
+            <form [formGroup]="form" (submit)="signup()">
+                <alert [type]="alert.class" *ngIf="alert.show">
+                    <span [innerHTML]="alert.message"></span>
+                </alert>
+
+                <div class="card">
+                    <div class="card-body">
                         <div class="form-group">
-                            <label for="email">E-mail:</label>
-                            <input type="email" class="form-control" id="email">
+                            <label for="email">E-mail: <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" [ngClass]="{'is-invalid': email.invalid && (email.dirty || email.touched)}" formControlName="email" id="email" [attr.disabled]="isLoading ? '' : null">
+                            <div class="invalid-feedback" *ngIf="email.invalid && (email.dirty || email.touched)">
+                                Por favor informe um e-mail válido.
+                            </div>
                         </div>
+
                         <div class="form-group">
-                            <label for="password">Senha:</label>
-                            <input type="password" class="form-control" id="password">
+                            <label for="password">Senha: <span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" [ngClass]="{'is-invalid': password.invalid && (password.dirty || password.touched)}" formControlName="password" id="password" [attr.disabled]="isLoading ? '' : null">
+                            <div class="invalid-feedback" *ngIf="password.invalid && (password.dirty || password.touched)">
+                                Por favor informe uma senha.
+                            </div>
                         </div>
+
                         <div class="form-group">
-                            <label for="password">Confirmar Senha:</label>
-                            <input type="password" class="form-control" id="password">
+                            <label for="password">Confirmar Senha: <span class="text-danger">*</span></label>
+                            <input type="password" class="form-control" [ngClass]="{'is-invalid': password_confirm.invalid && (password_confirm.dirty || password_confirm.touched)}" formControlName="password_confirm" id="password_confirm" [attr.disabled]="isLoading ? '' : null">
+                            <div class="invalid-feedback" *ngIf="password_confirm.invalid && (password_confirm.dirty || password_confirm.touched)">
+                                As senhas não conferem.
+                            </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Entrar</button>
-                    </form>
+                        <button type="submit" class="btn btn-primary btn-block" [disabled]="form.invalid || isLoading">{{ isLoading ? "Processando..." : "Cadastrar" }}</button>
+                    </div>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </div>

@@ -10,6 +10,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Erro404Component } from './erro404/erro404.component';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { AuthGuard } from './shared/guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -21,12 +24,14 @@ import { HttpClientModule } from '@angular/common/http';
     CarrinhoComponent
   ],
   imports: [
+    AlertModule,
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
-    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
